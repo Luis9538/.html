@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulacro ExploraNica</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; background: #f9f9f9; }
+    h1 { color: #2c3e50; }
+    .question { margin-bottom: 15px; padding: 10px; background: #fff; border-radius: 8px; }
+    button { margin: 10px 5px; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+    #result { font-size: 18px; margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>📌 Simulacro ExploraNica</h1>
+  <form id="quizForm">
+    <div class="question">
+      <p>1. ¿Cuál es el objetivo principal de ExploraNica?</p>
+      <input type="radio" name="q1" value="a"> a) Vender paquetes turísticos internacionales<br>
+      <input type="radio" name="q1" value="b"> b) Promover el patrimonio cultural, histórico y natural de Nicaragua<br>
+      <input type="radio" name="q1" value="c"> c) Sustituir a las agencias de viaje en el país<br>
+      <input type="radio" name="q1" value="d"> d) Ser una red social de viajeros<br>
+    </div>
+    <!-- ... incluye todas las demás preguntas como en el HTML anterior ... -->
+    <button type="button" onclick="calificar()">✅ Calificar</button>
+    <button type="reset">🔄 Reiniciar</button>
+  </form>
+  <p id="result"></p>
+
+  <script>
+    const respuestasCorrectas = {
+      q1: "b", q2: "b", q3: "c", q4: "b", q5: "b",
+      q6: "b", q7: "b", q8: "a", q9: "b", q10: "d",
+      q11: "b", q12: "b", q13: "b", q14: "b", q15: "a"
+    };
+
+    function calificar() {
+      let form = document.forms["quizForm"];
+      let aciertos = 0;
+      let total = Object.keys(respuestasCorrectas).length;
+
+      for (let q in respuestasCorrectas) {
+        let respuesta = form[q].value;
+        if (respuesta === respuestasCorrectas[q]) {
+          aciertos++;
+        }
+      }
+
+      document.getElementById("result").innerText =
+        "Tu puntuación: " + aciertos + " / " + total;
+    }
+  </script>
+</body>
+</html>
